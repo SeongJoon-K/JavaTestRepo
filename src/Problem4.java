@@ -1,12 +1,34 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Problem4 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
-
-        System.out.println("문자열 입력하세요");
         String word = sc.nextLine(); // 문자열 입력
-        char[] charArr = word.toCharArray();
+        // 예외처리
+        String answer = "";
+//        String word = sc.nextLine(); // 문자열 입력
+        if (word.length() <= 1000) {
+            List<Character> wordList = word.chars()
+                    .mapToObj(e -> (char) e).collect(Collectors.toList());
+            char UPPER_CASE = (char) 155;
+            char LOWER_CASE = (char) 219;
+            for (int i = 0; i < wordList.size(); i++) {
+                char c = wordList.get(i);
+                if (c == 32) { // 알파벳 일대
+                    answer += " ";
+                } else if (c >= 65 && c <= 90) {
+                    c = (char) (UPPER_CASE - c);
+                    answer += String.valueOf(c);
+                } else if (c >= 97 && c <= 122) {
+                    c = (char) (LOWER_CASE - c);
+                    answer += String.valueOf(c);
+                }
+            }
+        }
+        System.out.print(answer);
         /*
         기능 요구사항
         1. 문자열을 입력받는다. 공백도 포함
