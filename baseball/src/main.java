@@ -6,7 +6,8 @@ import java.util.Set;
 public class main {
     public static void main(String[] args) {
 
-
+        String str = "123";
+        str.chars().forEach(i-> System.out.println(i));
     }
     public static void checkDuplicatedNumber (String userInput) {
         Set<String> userInputList = new HashSet<>(List.of(userInput.split("")));
@@ -16,17 +17,4 @@ public class main {
         }
     }
 }
-
-    public static boolean reGameMessage() {
-        System.out.println(REGAME_SUGGESTION_MSG);
-        String reGameInput = Console.readLine();
-        if (reGameInput.equals("1")) {
-            return true;
-        }
-        if (reGameInput.equals("2")) {
-            return false;
-        }
-        throw new IllegalArgumentException(ERR_MSG);
-    }
-
 
