@@ -1,20 +1,21 @@
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class main {
+    public static Random random = new Random();
     public static void main(String[] args) {
-
-        String str = "123";
-        str.chars().forEach(i-> System.out.println(i));
+        List<String> num = new ArrayList<>();
+        int size = 10;
+        IntStream.range(0,size)
+                .mapToObj(i -> String.valueOf(random()))
+                        .filter(Predicate.isEqual("1"))
+                .forEach(num.add("U"));
+        System.out.println(num);
     }
-    public static void checkDuplicatedNumber (String userInput) {
-        Set<String> userInputList = new HashSet<>(List.of(userInput.split("")));
-        System.out.println(userInputList);
-        if (userInputList.size() != 3) {
-            throw new IllegalArgumentException("INPUT_ERROR");
-        }
+    public static int random() {
+        return random.nextInt(2);
     }
 }
 
